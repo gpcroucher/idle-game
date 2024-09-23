@@ -1,0 +1,11 @@
+.navbar {
+  display: flex;
+}
+
+.navbar a {
+  margin: 10px;
+  border: 1px solid blue;
+  padding: 10px;
+
+  display: block;
+}

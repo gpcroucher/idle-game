@@ -1,0 +1,10 @@
+.junkheap-controls {
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.junkheap-items {
+  margin: 0;
+}
