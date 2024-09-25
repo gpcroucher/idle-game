@@ -1,11 +1,15 @@
 .navbar {
+  margin-bottom: 1em;
+
   display: flex;
+  gap: 1px;
 }
 
 .navbar a {
-  margin: 10px;
+  margin-left: 0;
   border: 1px solid blue;
-  padding: 10px;
+  border-radius: 3px;
+  padding: 0.5em;
 
   display: block;
 }

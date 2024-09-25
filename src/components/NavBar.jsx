@@ -11,9 +11,6 @@ export default function NavBar(props) {
 
   return (
     <div className="navbar">
-      {/* <Link to="/">Home</Link>
-      <Link to="/junkheap">Junkheap</Link> */}
-
       {pages.map((page) => {
         if (page.link !== props.exclude) {
           return (
@@ -28,5 +25,5 @@ export default function NavBar(props) {
 }
 
 NavBar.propTypes = {
-  exclude: PropTypes.object,
+  exclude: PropTypes.string,
 };
