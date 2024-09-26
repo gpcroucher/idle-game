@@ -1,0 +1,6 @@
+.ProgressBar {
+  border: 1px solid grey;
+
+  width: 100px;
+  text-align: center;
+}

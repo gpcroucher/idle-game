@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+
+import Activity from "../components/Activity";
 import JunkItem from "../components/JunkItem";
 import NavBar from "../components/NavBar";
 import "./Junkheap.css";
@@ -86,6 +88,12 @@ export default function Junkheap() {
       <div className="junkheap-controls">
         <button onClick={handleJunkButton}>Rummage in the junkheap!</button>
       </div>
+      <Activity
+        onBegin={() => {}}
+        onEnd={handleJunkButton}
+        baseTime={5000}
+        activityName={"Rummage in the junkheap!"}
+      />
       <ul className="junkheap-items">{displayItems()}</ul>
     </div>
   );
