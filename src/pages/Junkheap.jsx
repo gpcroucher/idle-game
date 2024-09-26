@@ -85,9 +85,6 @@ export default function Junkheap() {
   return (
     <div className="junkheap">
       <NavBar exclude="/junkheap" />
-      <div className="junkheap-controls">
-        <button onClick={handleJunkButton}>Rummage in the junkheap!</button>
-      </div>
       <Activity
         onBegin={() => {}}
         onEnd={handleJunkButton}
