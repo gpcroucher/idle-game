@@ -19,7 +19,22 @@ export default function ProgressBar(props) {
     return () => clearInterval(timer);
   }, [props.active, props.endTime, props.duration]);
 
-  return <div className="ProgressBar">{remaining}</div>;
+  return (
+    <div className="progress-bar-container">
+      <div
+        className="progress-bar"
+        style={{ width: `${percentageCompleted()}%` }}
+      ></div>
+      <p className="progress-text">{remaining}</p>
+    </div>
+  );
+
+  function percentageCompleted() {
+    const elapsedTime = Date.now() - props.startTime;
+    console.log("elapsedTime:", elapsedTime);
+    const percentage = (elapsedTime / props.duration) * 100;
+    return percentage >= 100 ? 0 : percentage;
+  }
 }
 
 ProgressBar.propTypes = {
