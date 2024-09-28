@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import Activity from "../components/Activity";
 import JunkItem from "../components/JunkItem";
-import NavBar from "../components/NavBar";
 import "./Junkheap.css";
 
 import junkItems from "../assets/junkheapTable1";
@@ -83,8 +82,8 @@ export default function Junkheap() {
   }
 
   return (
-    <div className="junkheap">
-      <NavBar exclude="/junkheap" />
+    <div className="room room-junkheap">
+      <h2>Junkheap</h2>
       <Activity
         onBegin={() => {}}
         onEnd={handleJunkButton}

@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Inventory from "./pages/Inventory.jsx";
-import Junkheap from "./pages/Junkheap.jsx";
+import Map from "./pages/Map.jsx";
 import NavBar from "./components/NavBar.jsx";
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
                 </>
               }
             />
-            <Route path="/junkheap" element={<Junkheap />} />
             <Route path="/inventory" element={<Inventory />} />
+            <Route path="/map" element={<Map />} />
           </Routes>
         </div>
       </div>

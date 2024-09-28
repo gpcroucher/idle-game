@@ -6,7 +6,7 @@ export default function NavBar(props) {
   const pages = [
     { name: "Home", link: "/" },
     { name: "Inventory", link: "/inventory" },
-    { name: "Junkheap", link: "/junkheap" },
+    { name: "Map", link: "/map" },
   ];
 
   return (
