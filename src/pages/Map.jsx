@@ -1,4 +1,4 @@
-import Junkheap from "./Junkheap.jsx";
+import Junkheap from "../rooms/Junkheap.jsx";
 import NavBar from "../components/NavBar.jsx";
 
 import "./Map.css";

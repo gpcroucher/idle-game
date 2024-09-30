@@ -14,6 +14,7 @@ export default function Activity(props) {
       setTimeout(handleCountdownEnd, baseTime);
     }
 
+    // stop the countdown and run the activity's end function
     function handleCountdownEnd() {
       setActive(false);
       onEnd();
@@ -21,7 +22,7 @@ export default function Activity(props) {
   }, [active, baseTime, onEnd]);
 
   return (
-    <div className="activity-box">
+    <div className={`activity-box ${props.activityTitle}`}>
       <button onClick={handleClick}>{activityName}</button>
       <ProgressBar
         active={active}
@@ -33,14 +34,17 @@ export default function Activity(props) {
   );
 
   function handleClick() {
-    onBegin();
-    setActive(true);
-    setStartTime(Date.now());
-    setEndTime(Date.now() + baseTime);
+    // check conditions to begin the activity
+    if (onBegin()) {
+      setActive(true);
+      setStartTime(Date.now());
+      setEndTime(Date.now() + baseTime);
+    }
   }
 }
 
 Activity.propTypes = {
+  activityTitle: PropTypes.string,
   onBegin: PropTypes.func,
   onEnd: PropTypes.func,
   baseTime: PropTypes.number,

@@ -85,10 +85,11 @@ export default function Junkheap() {
     <div className="room room-junkheap">
       <h2>Junkheap</h2>
       <Activity
-        onBegin={() => {}}
+        activityTitle={"activity-rummage-1"}
+        onBegin={() => true}
         onEnd={handleJunkButton}
         baseTime={5000}
-        activityName={"Rummage in the junkheap!"}
+        activityName="Rummage in the junkheap!"
       />
       <ul className="junkheap-items">{displayItems()}</ul>
     </div>
