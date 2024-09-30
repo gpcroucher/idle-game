@@ -1,3 +1,4 @@
+import Foundry from "../rooms/Foundry.jsx";
 import Junkheap from "../rooms/Junkheap.jsx";
 import NavBar from "../components/NavBar.jsx";
 
@@ -9,6 +10,7 @@ export default function Map() {
       <NavBar exclude="/map" />
       <div className="room-container">
         <Junkheap />
+        <Foundry />
       </div>
     </>
   );
