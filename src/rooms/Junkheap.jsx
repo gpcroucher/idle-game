@@ -36,7 +36,7 @@ export default function Junkheap() {
   function getRandomJunk() {
     const randomInteger = Math.floor(Math.random() * (junkItems.length - 1));
     return {
-      item: junkItems[randomInteger],
+      item: items[junkItems[randomInteger].id],
       uid: rummagedItems.length,
       count: 1,
     };
@@ -46,20 +46,20 @@ export default function Junkheap() {
     setRummagedItems([...rummagedItems, getRandomJunk()]);
   }
 
-  // returns a JSX JunkItem component for each item in the list
+  // returns a JunkItem component for each itemstack in the list
   function displayItems() {
     // let i = 0;
     return rummagedItems.length ? (
-      rummagedItems.map((item) => {
+      rummagedItems.map((itemstack) => {
         // i++;
-        console.log(item);
+        console.log(itemstack);
         return (
           <JunkItem
-            key={item.uid}
-            uid={item.uid}
-            id={item.item.id}
-            name={item.item.name}
-            description={item.item.description}
+            key={itemstack.uid}
+            uid={itemstack.uid}
+            id={itemstack.item.id}
+            name={itemstack.item.name}
+            description={itemstack.item.description}
             collectFunc={addToBag}
           />
         );

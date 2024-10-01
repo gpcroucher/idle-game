@@ -1,43 +1,35 @@
 export default [
   {
     id: 0,
-    name: "Useless Sprocket",
-    description: "A toothed wheel with several teeth missing or bent",
+    weight: 1,
   },
   {
     id: 1,
-    name: "Doohickey Case",
-    description: "A little metal box that used to contain some kind of device",
+    weight: 1,
   },
   {
     id: 2,
-    name: "Dead Lightbulb",
-    description: "A sooty bulb with broken filaments",
+    weight: 1,
   },
   {
     id: 3,
-    name: "Cracked Vial",
-    description: "An acrid-smelling vial, no longer watertight",
+    weight: 1,
   },
-  { id: 4, name: "Table Leg", description: "A disembodied wooden table leg" },
+  { id: 4, weight: 1 },
   {
     id: 5,
-    name: "Frazzled Motor",
-    description: "An electric motor which has been pushed beyond its limits",
+    weight: 1,
   },
   {
     id: 6,
-    name: "One-legged Capacitor",
-    description: "A capacitor damaged beyond repair",
+    weight: 1,
   },
   {
     id: 7,
-    name: "Dog-eared Manual",
-    description: "This would have been informative, but it's all soggy",
+    weight: 1,
   },
   {
     id: 8,
-    name: "Stripped Bolt",
-    description: "A large steel bolt worn smooth",
+    weight: 1,
   },
 ];
