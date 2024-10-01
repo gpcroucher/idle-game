@@ -3,9 +3,9 @@ import NavBar from "../components/NavBar";
 import "./Inventory.css";
 
 export default function Inventory() {
-  function getJunkInventory() {
-    const storedInv = JSON.parse(localStorage.getItem("junkInventory"));
-    console.log("Stored junkInventory value:", storedInv);
+  function getInventory() {
+    const storedInv = JSON.parse(localStorage.getItem("inventory"));
+    console.log("Stored inventory value:", storedInv);
     return storedInv ? storedInv : [];
   }
 
@@ -13,8 +13,10 @@ export default function Inventory() {
     <>
       <NavBar exclude="/inventory" />
       <div className="inventory-container">
-        {getJunkInventory().map((item) => {
-          return <ItemStackCard key={item.id} item={item} />;
+        {getInventory().map((itemstack) => {
+          return (
+            <ItemStackCard key={itemstack.item.id} itemstack={itemstack} />
+          );
         })}
       </div>
     </>

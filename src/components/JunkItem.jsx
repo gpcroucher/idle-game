@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
 import "./JunkItem.css";
+import items from "../assets/items";
 
 export default function JunkItem(props) {
   const { uid, id, name, description, collectFunc } = props;
 
   function addThisToBag() {
     collectFunc({
+      item: items[id],
       uid: uid,
-      id: id,
-      name: name,
-      description: description,
+      count: 1,
     });
   }
 
