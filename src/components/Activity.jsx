@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import ProgressBar from "./ProgressBar";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Activity.css";
 
 export default function Activity(props) {
@@ -24,12 +24,16 @@ export default function Activity(props) {
   return (
     <div className={`activity-box ${props.activityTitle}`}>
       <button onClick={handleClick}>{activityName}</button>
-      <ProgressBar
-        active={active}
-        duration={baseTime}
-        startTime={startTime}
-        endTime={endTime}
-      />
+      {baseTime > 0 ? (
+        <ProgressBar
+          active={active}
+          duration={baseTime}
+          startTime={startTime}
+          endTime={endTime}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 
@@ -49,4 +53,9 @@ Activity.propTypes = {
   onEnd: PropTypes.func,
   baseTime: PropTypes.number,
   activityName: PropTypes.string,
+};
+
+Activity.defaultProps = {
+  onBegin: () => true,
+  baseTime: 0,
 };

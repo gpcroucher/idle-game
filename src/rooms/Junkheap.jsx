@@ -86,7 +86,6 @@ export default function Junkheap() {
       <h2>Junkheap</h2>
       <Activity
         activityTitle={"activity-rummage-1"}
-        onBegin={() => true}
         onEnd={handleJunkButton}
         baseTime={5000}
         activityName="Rummage in the junkheap!"
