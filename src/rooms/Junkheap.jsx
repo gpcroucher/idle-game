@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { addToInventory } from "../utils/inventoryFuncs";
 
 import Activity from "../components/Activity";
 import JunkItem from "../components/JunkItem";
@@ -22,32 +23,13 @@ export default function Junkheap() {
   }, [rummagedItems]);
 
   // removes an item from the list and puts it in the inventory
-  function addToBag(newItem) {
-    // load the inventory from local memory, or create it if it doesn't exist
-    const storedInv = JSON.parse(localStorage.getItem("inventory"));
-    console.log("Stored inventory value:", storedInv);
-    const inventory = storedInv ? storedInv : [];
-    console.log("inventory:", inventory);
-
-    // get the item stack in the inventory which matches the item given as argument (if it exists)
-    const matchingStack = inventory.find((e) => e.item.id === newItem.item.id);
-    console.log(`There ${matchingStack ? "is a" : "is no"} matching stack.`);
-
-    // if there is a matching item stack, then increment it, otherwise create the item stack
-    if (matchingStack !== undefined) {
-      matchingStack.count += newItem.count;
-      console.log(`Added 1 ${newItem.item.name} to inventory`);
-    } else {
-      inventory.push({ item: newItem, count: newItem.count });
-      console.log(`Created a stack of 1 ${newItem.item.name} in inventory`);
-    }
-
-    // save the inventory to local memory
-    localStorage.setItem("inventory", JSON.stringify(inventory));
-    console.log("Saved inventory to local storage.");
+  function addToBag(itemstack) {
+    addToInventory(itemstack);
 
     // remove the item from the list
-    setRummagedItems(rummagedItems.filter((item) => item.uid !== newItem.uid));
+    setRummagedItems(
+      rummagedItems.filter((item) => item.uid !== itemstack.uid)
+    );
   }
 
   // returns an itemstack corresponding to a random junk item from the list
