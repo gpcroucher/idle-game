@@ -35,7 +35,7 @@ export function getInventory() {
 // shrinks an itemstack in the inventory by a given number, returning false if this would reduce the count of the stack to less than 0
 export function removeFromInventory({ item, count }) {
   // load the inventory from local memory, or create it if it doesn't exist
-  const inventory = getInventory();
+  let inventory = getInventory();
   console.log("inventory:", inventory);
 
   // get the item stack in the inventory which matches the item given as argument (if it exists)
@@ -46,6 +46,12 @@ export function removeFromInventory({ item, count }) {
   if (matchingStack !== undefined && matchingStack.count >= count) {
     matchingStack.count -= count;
     console.log(`Added ${count} ${item.name} to inventory`);
+    // if the stack is now empty, remove it from the inventory
+    if (matchingStack.count === 0) {
+      inventory = inventory.filter(
+        (itemstack) => itemstack.item.id !== item.id
+      );
+    }
     saveInventory(inventory);
     return true;
   } else {
