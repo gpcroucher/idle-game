@@ -4,12 +4,14 @@ export default [
     name: "Useless Sprocket",
     description: "A toothed wheel with several teeth missing or bent",
     meltable: "steel",
+    meltvalue: 2,
   },
   {
     id: 1,
     name: "Doohickey Case",
     description: "A little metal box that used to contain some kind of device",
     meltable: "steel",
+    meltvalue: 1,
   },
   {
     id: 2,
@@ -43,4 +45,5 @@ export default [
     description: "A large steel bolt worn smooth",
     meltable: "steel",
   },
+  {},
 ];

@@ -27,6 +27,7 @@ export default function Foundry() {
   return (
     <div className="room room-foundry">
       <h2>Foundry</h2>
+      <p>The hopper contains {hopperContents} scrap</p>
       <p>Add an item to the hopper:</p>
       {displayHopperables()}
       <Activity
@@ -46,7 +47,9 @@ export default function Foundry() {
       count: 1,
     };
     console.log(thisItemStack);
-    setHopperContents(hopperContents + 1);
+    setHopperContents(
+      hopperContents + thisItemStack.item.meltvalue * thisItemStack.count
+    );
     decrementInventoryStack(thisItemStack.item);
   }
 
