@@ -31,19 +31,21 @@ export default [
   },
   {
     id: 6,
-    name: "One-legged Capacitor",
-    description: "A capacitor damaged beyond repair",
-  },
-  {
-    id: 7,
     name: "Dog-eared Manual",
     description: "This would have been informative, but it's all soggy",
   },
   {
-    id: 8,
+    id: 7,
     name: "Stripped Bolt",
     description: "A large steel bolt worn smooth",
     meltable: "steel",
+    meltvalue: 2,
   },
-  {},
+  {
+    id: 8,
+    name: "Flanged Offcut",
+    description: "A steel plate bent on one edge",
+    meltable: "steel",
+    meltvalue: 1,
+  },
 ];

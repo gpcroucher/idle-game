@@ -34,7 +34,8 @@ export default function Junkheap() {
 
   // returns an itemstack corresponding to a random junk item from the list
   function getRandomJunk() {
-    const randomInteger = Math.floor(Math.random() * (junkItems.length - 1));
+    const randomInteger = Math.floor(Math.random() * junkItems.length);
+    console.log(randomInteger);
     return {
       item: items[junkItems[randomInteger].id],
       uid: rummagedItems.length,
@@ -75,7 +76,7 @@ export default function Junkheap() {
       <Activity
         activityTitle={"activity-rummage-1"}
         onEnd={handleJunkButton}
-        baseTime={5000}
+        baseTime={0}
         activityName="Rummage in the junkheap!"
       />
       <ul className="junkheap-items">{displayItems()}</ul>
