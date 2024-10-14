@@ -7,7 +7,7 @@ export default function Activity(props) {
   const [active, setActive] = useState(false);
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
-  const { onBegin, onEnd, baseTime, activityName } = props;
+  const { onBegin = () => true, onEnd, baseTime = 0, activityName } = props;
 
   useEffect(() => {
     if (active) {
@@ -53,9 +53,4 @@ Activity.propTypes = {
   onEnd: PropTypes.func,
   baseTime: PropTypes.number,
   activityName: PropTypes.string,
-};
-
-Activity.defaultProps = {
-  onBegin: () => true,
-  baseTime: 0,
 };
