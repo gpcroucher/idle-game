@@ -14,7 +14,7 @@ export default function ProgressBar(props) {
       setRemaining(props.duration / 1000);
     }
     function secondsRemaining() {
-      return Math.trunc((props.endTime - Date.now()) / 1000);
+      return Math.ceil((props.endTime - Date.now()) / 1000);
     }
     return () => clearInterval(timer);
   }, [props.active, props.endTime, props.duration]);
