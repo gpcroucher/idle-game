@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { addToInventory } from "../utils/inventoryFuncs";
-
 import Activity from "../components/Activity";
 import JunkItem from "../components/JunkItem";
-import "./Junkheap.css";
-
 import items from "../assets/items";
 import junkItems from "../assets/junkheapTable1";
 
@@ -30,8 +27,8 @@ export default function Junkheap() {
     setRummagedItems(
       rummagedItems.filter(
         (uitemstack: { itemstack: Itemstack; uid: number }) =>
-          uitemstack.uid !== uid
-      )
+          uitemstack.uid !== uid,
+      ),
     );
   }
 
@@ -74,15 +71,16 @@ export default function Junkheap() {
   }
 
   return (
-    <div className="room room-junkheap">
+    <div className="border border-black p-4">
       <h2>Junkheap</h2>
       <Activity
         activityTitle={"activity-rummage-1"}
         onEnd={handleJunkButton}
         baseTime={0}
         activityName="Rummage in the junkheap!"
+        colour={[95, 158, 160]}
       />
-      <ul className="junkheap-items">{displayItems()}</ul>
+      <ul className="m-0 pl-0">{displayItems()}</ul>
     </div>
   );
 }

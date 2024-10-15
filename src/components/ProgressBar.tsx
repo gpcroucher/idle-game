@@ -1,8 +1,8 @@
-import "./ProgressBar.css";
 import { useEffect, useState } from "react";
 
 export default function ProgressBar(props: ProgressBarProps) {
   const [remaining, setRemaining] = useState(props.duration / 1000);
+  const rgbString = props.colour.join(",");
 
   useEffect(() => {
     if (props.active) {
@@ -19,12 +19,15 @@ export default function ProgressBar(props: ProgressBarProps) {
   }, [props.active, props.endTime, props.duration]);
 
   return (
-    <div className="progress-bar-container">
+    <div className="relative w-[100px] border border-gray-500 bg-[rgb(176,196,222)] text-center">
       <div
-        className="progress-bar"
-        style={{ width: `${percentageCompleted()}%` }}
+        className={`absolute left-0 h-full`}
+        style={{
+          width: `${percentageCompleted()}%`,
+          backgroundColor: `rgb(${rgbString})`,
+        }}
       ></div>
-      <p className="progress-text">{remaining}</p>
+      <p className="m-0 opacity-95">{remaining}</p>
     </div>
   );
 
@@ -41,4 +44,5 @@ type ProgressBarProps = {
   duration: number; // the duration of the countdown (displayed when the countdown is inactive)
   startTime: number; // the time in milliseconds when the countdown began
   endTime: number; // the time in milliseconds when the countdown is due to end
+  colour: number[]; // the colour of the progress bar as an RGB value
 };

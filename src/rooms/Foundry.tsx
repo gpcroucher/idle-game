@@ -1,6 +1,5 @@
 import Activity from "../components/Activity";
 import { useEffect, useState } from "react";
-import "./Foundry.css";
 import { decrementInventoryStack, getInventory } from "../utils/inventoryFuncs";
 import items from "../assets/items";
 
@@ -11,7 +10,7 @@ export default function Foundry() {
   });
   const [hopperContents, setHopperContents] = useState(() => {
     const memory = JSON.parse(
-      localStorage.getItem("foundry-hopperContents") || ""
+      localStorage.getItem("foundry-hopperContents") || "",
     );
     return memory ? memory : 0;
   });
@@ -22,12 +21,12 @@ export default function Foundry() {
   useEffect(() => {
     localStorage.setItem(
       "foundry-hopperContents",
-      JSON.stringify(hopperContents)
+      JSON.stringify(hopperContents),
     );
   }, [hopperContents]);
 
   return (
-    <div className="room room-foundry">
+    <div className="border border-black p-4">
       <h2>Foundry</h2>
       <p>The hopper contains {hopperContents} scrap</p>
       <p>Add an item to the hopper:</p>
@@ -38,6 +37,7 @@ export default function Foundry() {
         onEnd={doMelt}
         baseTime={5000}
         activityName="Melt some scrap!"
+        colour={[255, 165, 0]}
       />
       <p>Sheets: {sheets}</p>
     </div>
@@ -49,7 +49,7 @@ export default function Foundry() {
     }
     console.log(
       "event.currentTarget.id.split('#')[1]",
-      event.currentTarget.id.split("#")[1]
+      event.currentTarget.id.split("#")[1],
     );
     const thisItemStack = {
       item: items[Number(event.currentTarget.id.split("#")[1])], // todo: make this less horrible?
@@ -57,7 +57,7 @@ export default function Foundry() {
     };
     if (thisItemStack.item.meltvalue) {
       setHopperContents(
-        hopperContents + thisItemStack.item.meltvalue * thisItemStack.count
+        hopperContents + thisItemStack.item.meltvalue * thisItemStack.count,
       );
       decrementInventoryStack(thisItemStack.item);
     }
@@ -84,7 +84,7 @@ export default function Foundry() {
             Add to Hopper
           </button>
         </div>
-      )
+      ),
     );
     return hopperables.length > 0 ? (
       hopperables
@@ -101,7 +101,7 @@ export default function Foundry() {
   function getHopperablesFromInventory() {
     const inventory = getInventory();
     return inventory.filter(
-      (itemstack: Itemstack) => itemstack.item.meltable === "steel"
+      (itemstack: Itemstack) => itemstack.item.meltable === "steel",
     );
   }
 }

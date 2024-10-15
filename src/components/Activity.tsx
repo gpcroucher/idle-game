@@ -1,6 +1,5 @@
 import ProgressBar from "./ProgressBar";
 import { useEffect, useState } from "react";
-import "./Activity.css";
 
 export default function Activity(props: ActivityProps) {
   const [active, setActive] = useState(false);
@@ -21,7 +20,7 @@ export default function Activity(props: ActivityProps) {
   }, [active, baseTime, onEnd]);
 
   return (
-    <div className={`activity-box ${props.activityTitle}`}>
+    <div className={`flex rounded-md border border-black`}>
       <button onClick={handleClick}>{activityName}</button>
       {baseTime > 0 ? (
         <ProgressBar
@@ -29,6 +28,7 @@ export default function Activity(props: ActivityProps) {
           duration={baseTime}
           startTime={startTime}
           endTime={endTime}
+          colour={props.colour}
         />
       ) : (
         <></>
@@ -52,4 +52,5 @@ type ActivityProps = {
   onEnd: () => void;
   baseTime?: number;
   activityName: string;
+  colour: number[];
 };

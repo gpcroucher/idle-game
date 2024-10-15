@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import "./NavBar.css";
 
 export default function NavBar(props: { exclude: string }) {
   const pages = [
@@ -9,11 +8,15 @@ export default function NavBar(props: { exclude: string }) {
   ];
 
   return (
-    <div className="navbar">
+    <div className="mb-4 flex gap-px">
       {pages.map((page) => {
         if (page.link !== props.exclude) {
           return (
-            <Link key={page.link} to={page.link}>
+            <Link
+              className="ml-0 block rounded-sm border border-[rgb(0,0,255)] p-2"
+              key={page.link}
+              to={page.link}
+            >
               {page.name}
             </Link>
           );

@@ -1,4 +1,3 @@
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Inventory from "./pages/Inventory.tsx";
 import Map from "./pages/Map.tsx";

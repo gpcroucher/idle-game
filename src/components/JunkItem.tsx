@@ -1,4 +1,3 @@
-import "./JunkItem.css";
 import items from "../assets/items";
 
 export default function JunkItem(props: JunkItemProps) {
@@ -11,12 +10,12 @@ export default function JunkItem(props: JunkItemProps) {
         item: items[id],
         count: 1,
       },
-      uid
+      uid,
     );
   }
 
   return (
-    <div key={id} className="junkItem">
+    <div key={id} className="border border-black">
       <h3>{name}</h3>
       <p>{description}</p>
       <button onClick={addThisToBag}>Add to bag</button>
