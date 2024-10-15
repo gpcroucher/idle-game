@@ -1,6 +1,6 @@
-import Foundry from "../rooms/Foundry.jsx";
-import Junkheap from "../rooms/Junkheap.jsx";
-import NavBar from "../components/NavBar.jsx";
+import Foundry from "../rooms/Foundry";
+import Junkheap from "../rooms/Junkheap";
+import NavBar from "../components/NavBar";
 
 import "./Map.css";
 

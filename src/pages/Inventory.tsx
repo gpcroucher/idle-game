@@ -9,7 +9,7 @@ export default function Inventory() {
     <>
       <NavBar exclude="/inventory" />
       <div className="inventory-container">
-        {getInventory().map((itemstack) => {
+        {getInventory().map((itemstack: Itemstack) => {
           return (
             <ItemStackCard key={itemstack.item.id} itemstack={itemstack} />
           );

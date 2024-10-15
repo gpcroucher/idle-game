@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
 import "./ProgressBar.css";
 import { useEffect, useState } from "react";
 
-export default function ProgressBar(props) {
+export default function ProgressBar(props: ProgressBarProps) {
   const [remaining, setRemaining] = useState(props.duration / 1000);
 
   useEffect(() => {
@@ -37,9 +36,9 @@ export default function ProgressBar(props) {
   }
 }
 
-ProgressBar.propTypes = {
-  active: PropTypes.bool, // whether or not there is an active countdown
-  duration: PropTypes.number, // the duration of the countdown (displayed when the countdown is inactive)
-  startTime: PropTypes.number, // the time in milliseconds when the countdown began
-  endTime: PropTypes.number, // the time in milliseconds when the countdown is due to end
+type ProgressBarProps = {
+  active: boolean; // whether or not there is an active countdown
+  duration: number; // the duration of the countdown (displayed when the countdown is inactive)
+  startTime: number; // the time in milliseconds when the countdown began
+  endTime: number; // the time in milliseconds when the countdown is due to end
 };

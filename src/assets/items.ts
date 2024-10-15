@@ -48,4 +48,4 @@ export default [
     meltable: "steel",
     meltvalue: 1,
   },
-];
+] as Item[];

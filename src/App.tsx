@@ -1,8 +1,8 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Inventory from "./pages/Inventory.jsx";
-import Map from "./pages/Map.jsx";
-import NavBar from "./components/NavBar.jsx";
+import Inventory from "./pages/Inventory.tsx";
+import Map from "./pages/Map.tsx";
+import NavBar from "./components/NavBar.tsx";
 
 function App() {
   return (

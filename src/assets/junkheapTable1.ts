@@ -32,4 +32,4 @@ export default [
     id: 8,
     weight: 1,
   },
-];
+] as { id: number; weight: number }[];

@@ -1,7 +1,6 @@
-import PropTypes from "prop-types";
 import "./ItemStackCard.css";
 
-export default function ItemStackCard({ itemstack }) {
+export default function ItemStackCard({ itemstack }: { itemstack: Itemstack }) {
   return (
     <div className="item-stack-card">
       <p className="item-stack-card-name">{itemstack.item.name}</p>
@@ -12,7 +11,3 @@ export default function ItemStackCard({ itemstack }) {
     </div>
   );
 }
-
-ItemStackCard.propTypes = {
-  itemstack: PropTypes.object,
-};

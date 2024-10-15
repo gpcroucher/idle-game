@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import PropTypes from "prop-types";
 
-export default function NavBar(props) {
+export default function NavBar(props: { exclude: string }) {
   const pages = [
     { name: "Home", link: "/" },
     { name: "Inventory", link: "/inventory" },
@@ -23,7 +22,3 @@ export default function NavBar(props) {
     </div>
   );
 }
-
-NavBar.propTypes = {
-  exclude: PropTypes.string,
-};

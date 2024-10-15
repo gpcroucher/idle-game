@@ -10,11 +10,11 @@ import junkItems from "../assets/junkheapTable1";
 
 export default function Junkheap() {
   const initialItems = [
-    { item: items[0], uid: 0, count: 1 },
-    { item: items[1], uid: 1, count: 1 },
+    { itemstack: { item: items[0], count: 1 }, uid: 0 },
+    { itemstack: { item: items[1], count: 1 }, uid: 1 },
   ];
   const [rummagedItems, setRummagedItems] = useState(() => {
-    const memory = JSON.parse(localStorage.getItem("rummagedItems"));
+    const memory = JSON.parse(localStorage.getItem("rummagedItems") || "");
     return memory ? memory : initialItems;
   });
 
@@ -23,12 +23,15 @@ export default function Junkheap() {
   }, [rummagedItems]);
 
   // removes an item from the list and puts it in the inventory
-  function addToBag(itemstack) {
+  function addToBag(itemstack: Itemstack, uid: number) {
     addToInventory(itemstack);
 
     // remove the item from the list
     setRummagedItems(
-      rummagedItems.filter((item) => item.uid !== itemstack.uid)
+      rummagedItems.filter(
+        (uitemstack: { itemstack: Itemstack; uid: number }) =>
+          uitemstack.uid !== uid
+      )
     );
   }
 
@@ -37,9 +40,11 @@ export default function Junkheap() {
     const randomInteger = Math.floor(Math.random() * junkItems.length);
     console.log(randomInteger);
     return {
-      item: items[junkItems[randomInteger].id],
-      uid: rummagedItems.length,
-      count: 1,
+      itemstack: {
+        item: items[junkItems[randomInteger].id],
+        count: 1,
+      },
+      uid: rummagedItems.length as number,
     };
   }
 
@@ -50,17 +55,15 @@ export default function Junkheap() {
   // returns a JunkItem component for each itemstack in the list
   function displayItems() {
     // let i = 0;
-    return rummagedItems.length ? (
-      rummagedItems.map((itemstack) => {
+    return rummagedItems.length > 0 ? (
+      rummagedItems.map((uitemstack: { itemstack: Itemstack; uid: number }) => {
         // i++;
-        console.log(itemstack);
+        console.log(uitemstack);
         return (
           <JunkItem
-            key={itemstack.uid}
-            uid={itemstack.uid}
-            id={itemstack.item.id}
-            name={itemstack.item.name}
-            description={itemstack.item.description}
+            key={uitemstack.uid}
+            uid={uitemstack.uid}
+            item={uitemstack.itemstack.item}
             collectFunc={addToBag}
           />
         );

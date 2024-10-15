@@ -6,11 +6,13 @@ import items from "../assets/items";
 
 export default function Foundry() {
   const [sheets, setSheets] = useState(() => {
-    const memory = JSON.parse(localStorage.getItem("foundry-sheets"));
+    const memory = JSON.parse(localStorage.getItem("foundry-sheets") || "");
     return memory ? memory : 0;
   });
   const [hopperContents, setHopperContents] = useState(() => {
-    const memory = JSON.parse(localStorage.getItem("foundry-hopperContents"));
+    const memory = JSON.parse(
+      localStorage.getItem("foundry-hopperContents") || ""
+    );
     return memory ? memory : 0;
   });
 
@@ -41,38 +43,49 @@ export default function Foundry() {
     </div>
   );
 
-  function addToHopper(event) {
+  function addToHopper(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    if (!event.currentTarget) {
+      return;
+    }
+    console.log(
+      "event.currentTarget.id.split('#')[1]",
+      event.currentTarget.id.split("#")[1]
+    );
     const thisItemStack = {
-      item: items[event.target.id.split("#")[1]],
+      item: items[Number(event.currentTarget.id.split("#")[1])], // todo: make this less horrible?
       count: 1,
     };
-    console.log(thisItemStack);
-    setHopperContents(
-      hopperContents + thisItemStack.item.meltvalue * thisItemStack.count
-    );
-    decrementInventoryStack(thisItemStack.item);
+    if (thisItemStack.item.meltvalue) {
+      setHopperContents(
+        hopperContents + thisItemStack.item.meltvalue * thisItemStack.count
+      );
+      decrementInventoryStack(thisItemStack.item);
+    }
   }
 
   function checkHopper() {
     if (hopperContents >= 4) {
       return true;
     }
+    return false;
   }
 
   function displayHopperables() {
-    const hopperables = getHopperablesFromInventory().map((itemstack) => (
-      <div key={itemstack.item.id}>
-        <p>
-          {itemstack.item.name} x{itemstack.count}
-        </p>
-        <button
-          onClick={addToHopper}
-          id={`hopperableButton#${itemstack.item.id}`}
-        >
-          Add to Hopper
-        </button>
-      </div>
-    ));
+    const hopperables = getHopperablesFromInventory().map(
+      (itemstack: Itemstack) => (
+        <div key={itemstack.item.id}>
+          <p>
+            {itemstack.item.name} x{itemstack.count}
+          </p>
+          <button
+            onClick={addToHopper}
+            id={`hopperableButton#${itemstack.item.id}`}
+          >
+            Add to Hopper
+          </button>
+        </div>
+      )
+    );
     return hopperables.length > 0 ? (
       hopperables
     ) : (
@@ -87,6 +100,8 @@ export default function Foundry() {
 
   function getHopperablesFromInventory() {
     const inventory = getInventory();
-    return inventory.filter((itemstack) => itemstack.item.meltable === "steel");
+    return inventory.filter(
+      (itemstack: Itemstack) => itemstack.item.meltable === "steel"
+    );
   }
 }
