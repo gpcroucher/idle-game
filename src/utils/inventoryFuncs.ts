@@ -27,9 +27,8 @@ export function incrementInventoryStack(item: Item) {
   addToInventory({ item: item, count: 1 });
 }
 
-export function getInventory() {
-  const storedInv = JSON.parse(localStorage.getItem("inventory") || "");
-  return storedInv ? storedInv : [];
+export function getInventory(): Itemstack[] {
+  return JSON.parse(localStorage.getItem("inventory") || "[]");
 }
 
 // shrinks an itemstack in the inventory by a given number, returning false if this would reduce the count of the stack to less than 0
@@ -49,7 +48,7 @@ export function removeFromInventory({ item, count }: Itemstack) {
     // if the stack is now empty, remove it from the inventory
     if (matchingStack.count === 0) {
       inventory = inventory.filter(
-        (itemstack: Itemstack) => itemstack.item.id !== item.id
+        (itemstack: Itemstack) => itemstack.item.id !== item.id,
       );
     }
     saveInventory(inventory);

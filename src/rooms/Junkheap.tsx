@@ -10,10 +10,12 @@ export default function Junkheap() {
     { itemstack: { item: items[0], count: 1 }, uid: 0 },
     { itemstack: { item: items[1], count: 1 }, uid: 1 },
   ];
-  const [rummagedItems, setRummagedItems] = useState(() => {
-    const memory = JSON.parse(localStorage.getItem("rummagedItems") || "");
-    return memory ? memory : initialItems;
-  });
+  const [rummagedItems, setRummagedItems] = useState<
+    { itemstack: Itemstack; uid: number }[]
+  >(() => {
+    const memory = JSON.parse(localStorage.getItem("rummagedItems") || "[]");
+    return memory.length ? memory : initialItems;
+  }); // todo: this is janky?
 
   useEffect(() => {
     localStorage.setItem("rummagedItems", JSON.stringify(rummagedItems));

@@ -4,13 +4,13 @@ import { decrementInventoryStack, getInventory } from "../utils/inventoryFuncs";
 import items from "../assets/items";
 
 export default function Foundry() {
-  const [sheets, setSheets] = useState(() => {
-    const memory = JSON.parse(localStorage.getItem("foundry-sheets") || "");
+  const [sheets, setSheets] = useState<number>(() => {
+    const memory = JSON.parse(localStorage.getItem("foundry-sheets") || "0");
     return memory ? memory : 0;
   });
-  const [hopperContents, setHopperContents] = useState(() => {
+  const [hopperContents, setHopperContents] = useState<number>(() => {
     const memory = JSON.parse(
-      localStorage.getItem("foundry-hopperContents") || "",
+      localStorage.getItem("foundry-hopperContents") || "0",
     );
     return memory ? memory : 0;
   });
@@ -101,7 +101,8 @@ export default function Foundry() {
   function getHopperablesFromInventory() {
     const inventory = getInventory();
     return inventory.filter(
-      (itemstack: Itemstack) => itemstack.item.meltable === "steel",
+      (itemstack: Itemstack) =>
+        itemstack.item.meltable === true && itemstack.item.material === "steel",
     );
   }
 }

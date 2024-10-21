@@ -2,7 +2,8 @@ type Item = {
   id: number;
   name: string;
   description: string;
-  meltable?: string;
+  material: "complex" | "aluminium" | "glass" | "paper" | "steel" | "wood";
+  meltable?: boolean;
   meltvalue?: number;
 };
 

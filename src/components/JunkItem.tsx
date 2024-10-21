@@ -1,8 +1,9 @@
 import items from "../assets/items";
+import MaterialIcon from "./MaterialIcon";
 
 export default function JunkItem(props: JunkItemProps) {
   const { uid, item, collectFunc } = props;
-  const { id, name, description } = item;
+  const { id, name, description, material } = item;
 
   function addThisToBag() {
     collectFunc(
@@ -16,7 +17,10 @@ export default function JunkItem(props: JunkItemProps) {
 
   return (
     <div key={id} className="border border-black">
-      <h3>{name}</h3>
+      <div className="flex">
+        <h3>{name}</h3>
+        <MaterialIcon material={material} />
+      </div>
       <p>{description}</p>
       <button onClick={addThisToBag}>Add to bag</button>
     </div>
