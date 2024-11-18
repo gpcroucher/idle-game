@@ -23,7 +23,7 @@ export default function Junkheap() {
 
   // removes an item from the list and puts it in the inventory
   function addToBag(itemstack: Itemstack, uid: number) {
-    addToInventory(itemstack);
+    addToInventory({ itemID: itemstack.item.id, count: itemstack.count });
 
     // remove the item from the list
     setRummagedItems(
@@ -43,7 +43,7 @@ export default function Junkheap() {
         item: items[junkItems[randomInteger].id],
         count: 1,
       },
-      uid: rummagedItems.length as number,
+      uid: rummagedItems.length as number, // TODO set this as something else to prevent jank when adding to bag
     };
   }
 
